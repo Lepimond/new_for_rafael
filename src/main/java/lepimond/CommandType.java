@@ -86,13 +86,16 @@ public enum CommandType {
         JSONArray json = new JSONArray(jsonInput);
 
         for(int i = 0; i < json.length(); ++i) {
-            JSONObject currentObject = json.getJSONObject(i);
-            String firstName = currentObject.getString("first_name");
-            String lastName = currentObject.getString("last_name");
-            int age = currentObject.getInt("age");
-            this.insert(firstName, lastName, age);
+            insertLine(json, i);
         }
+    }
 
+    private void insertLine(JSONArray json, int lineNumber) throws SQLException {
+        JSONObject currentObject = json.getJSONObject(lineNumber);
+        String firstName = currentObject.getString("first_name");
+        String lastName = currentObject.getString("last_name");
+        int age = currentObject.getInt("age");
+        this.insert(firstName, lastName, age);
     }
 
     private ResultSet selectID(int id) throws SQLException {
