@@ -29,7 +29,23 @@ public enum CommandType {
     }
 
     private void printHelp() {
-        System.out.println("/read <название_файла>\n\tСчитывает JSON-файл со списком людей и записывает его в локальную реляционную БД\n/delete <id>\n\tУдаляет из БД запись с указанным id\n/delete_all\n\tУдаляет вообще все записи в БД\n/insert <имя>, <фамилия>, <возраст>\n\tВставляет в БД новую запись \"имя, фамилия, возраст\"\n/edit <id> <атрибут_1>=\"<значение_1>\", <атрибут_2>=\"значение_2\", ...\n\tИзменяет содержимое отдельных атрибутов отдельно взятой записи\n/avg_age\n\tВыводит средний возраст всех людей в БД\n/select_all\n\tВыводит все записи, наличествующие в БД\n/select <id>\n\tВыводит из БД запись с конкретным id");
+        System.out.println("""
+    /read <название_файла>
+        Считывает JSON-файл со списком людей и записывает его в локальную реляционную БД
+    /delete <id>
+        Удаляет из БД запись с указанным id
+    /delete_all
+        Удаляет вообще все записи в БД
+    /insert <имя>, <фамилия>, <возраст>
+        Вставляет в БД новую запись "имя, фамилия, возраст"
+    /edit <id> <атрибут_1>="<значение_1>", <атрибут_2>="значение_2", ...
+        Изменяет содержимое отдельных атрибутов отдельно взятой записи
+    /avg_age
+        Выводит средний возраст всех людей в БД
+    /select_all
+        Выводит все записи, наличествующие в БД
+    /select <id>
+        Выводит из БД запись с конкретным id""");
     }
 
     private void printResult(ResultSet result) throws SQLException {
@@ -59,11 +75,14 @@ public enum CommandType {
             stmt.executeUpdate("DROP TABLE " + TABLE_NAME);
         }
 
-        stmt.executeUpdate("CREATE TABLE people " +
-                "(\n    id int AUTO_INCREMENT,\n    " +
-                "first_name varchar(255),\n    " +
-                "last_name varchar(255),\n    " +
-                "age int,\nPRIMARY KEY(id)\n);");
+        stmt.executeUpdate("""
+                       CREATE TABLE people (
+                       id int AUTO_INCREMENT,
+                       first_name varchar(255),
+                       last_name varchar(255),
+                       age int,
+                       PRIMARY KEY(id)
+                       );""");
         JSONArray json = new JSONArray(jsonInput);
 
         for(int i = 0; i < json.length(); ++i) {
