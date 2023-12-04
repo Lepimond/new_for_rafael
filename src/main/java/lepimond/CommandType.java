@@ -35,6 +35,9 @@ public enum CommandType {
     private void printResult(ResultSet result) throws SQLException {
         System.out.printf("----------------------------------------------------%n");
 
+        System.out.printf("|  id  |   first_name    |    last_name    |  age  |%n");
+        System.out.printf("----------------------------------------------------%n");
+
         while(result.next()) {
             System.out.printf("| %04d | %-15s | %-15s | %04d |%n",
                     result.getInt(1),
