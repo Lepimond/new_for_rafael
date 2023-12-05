@@ -1,6 +1,7 @@
 package lepimond;
 
 import com.mysql.cj.jdbc.Driver;
+import lepimond.commands.*;
 
 import java.io.File;
 import java.io.FileReader;
@@ -14,11 +15,11 @@ import static lepimond.DBUtil.*;
 
 public class Main {
 
-    public static void main(String[] args) throws SQLException, IOException {
+    public static void main(String[] args) throws Exception {
         new Main();
     }
 
-    private Main() throws SQLException, IOException {
+    private Main() throws Exception {
         readConfigs();
 
         DriverManager.registerDriver(new Driver());
@@ -62,25 +63,25 @@ public class Main {
         reader.close();
     }
 
-    private void readNextCommand() throws SQLException, IOException, StringIndexOutOfBoundsException, NullPointerException {
+    private void readNextCommand() throws Exception {
         String currentCommand = scan.next();
 
         if (databaseExists(DB_NAME)) {
             if (tableExists(TABLE_NAME) || currentCommand.equals("/read") || currentCommand.equals("/help")) {
-                CommandType type;
+                Command command;
                 switch (currentCommand) {
-                    case "/read" -> type = CommandType.READ;
-                    case "/delete" -> type = CommandType.DELETE;
-                    case "/delete_all" -> type = CommandType.DELETE_ALL;
-                    case "/insert" -> type = CommandType.INSERT;
-                    case "/edit" -> type = CommandType.EDIT;
-                    case "/avg_age" -> type = CommandType.AVG_AGE;
-                    case "/select_all" -> type = CommandType.SELECT_ALL;
-                    case "/select" -> type = CommandType.SELECT;
-                    case "/help" -> type = CommandType.HELP;
+                    case "/read" -> command = new ReadCommand();
+                    case "/delete" -> command = new DeleteCommand(scan.nextInt());
+                    case "/delete_all" -> command = new DeleteAllCommand();
+                    case "/insert" -> command = new InsertCommand(scan.next(), scan.next(), scan.nextInt());
+                    case "/edit" -> command = new EditCommand(scan.nextInt(), scan.nextLine());
+                    case "/avg_age" -> command = new AverageAgeCommand();
+                    case "/select_all" -> command = new SelectAllCommand();
+                    case "/select" -> command = new SelectCommand(scan.nextInt());
+                    case "/help" -> command = new HelpCommand();
                     default -> throw new SQLException();
                 }
-                type.run();
+                command.run();
             }
         }
     }
