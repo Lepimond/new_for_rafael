@@ -5,6 +5,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import lepimond.commands.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -16,51 +18,14 @@ public enum CommandType {
     public void run() throws SQLException, IOException {
         switch (this) {
             case READ -> makeTable(readFile(FILE_NAME));
-            case DELETE -> deleteId(scan.nextInt());
-            case DELETE_ALL -> deleteAll();
-            case INSERT -> insert(scan.next(), scan.next(), scan.nextInt());
-            case EDIT -> editId(scan.nextInt(), scan.nextLine());
-            case AVG_AGE -> System.out.println(avgAge());
-            case SELECT_ALL -> printResult(selectAll());
-            case SELECT -> printResult(selectID(scan.nextInt()));
-            case HELP -> printHelp();
-        }
-
-    }
-
-    private void printHelp() {
-        System.out.println("""
-    /read
-        Считывает JSON-файл со списком людей и записывает его в локальную реляционную БД
-    /delete <id>
-        Удаляет из БД запись с указанным id
-    /delete_all
-        Удаляет вообще все записи в БД
-    /insert <имя>, <фамилия>, <возраст>
-        Вставляет в БД новую запись "имя, фамилия, возраст"
-    /edit <id> <атрибут_1>="<значение_1>", <атрибут_2>="значение_2", ...
-        Изменяет содержимое отдельных атрибутов отдельно взятой записи
-    /avg_age
-        Выводит средний возраст всех людей в БД
-    /select_all
-        Выводит все записи, наличествующие в БД
-    /select <id>
-        Выводит из БД запись с конкретным id""");
-    }
-
-    private void printResult(ResultSet result) throws SQLException {
-        System.out.printf("----------------------------------------------------%n");
-
-        System.out.printf("|  id  |   first_name    |    last_name    |  age  |%n");
-        System.out.printf("----------------------------------------------------%n");
-
-        while(result.next()) {
-            System.out.printf("| %04d | %-15s | %-15s | %04d |%n",
-                    result.getInt(1),
-                    result.getString(2),
-                    result.getString(3),
-                    result.getInt(4));
-            System.out.printf("----------------------------------------------------%n");
+            case DELETE -> new DeleteCommand(scan.nextInt()).run();
+            case DELETE_ALL -> new DeleteAllCommand().run();
+            case INSERT -> new InsertCommand(scan.next(), scan.next(), scan.nextInt()).run();
+            case EDIT -> new EditCommand(scan.nextInt(), scan.nextLine()).run();
+            case AVG_AGE -> new AverageAgeCommand().run();
+            case SELECT_ALL -> new SelectAllCommand().run();
+            case SELECT -> new SelectCommand(scan.nextInt()).run();
+            case HELP -> new HelpCommand().run();
         }
 
     }
@@ -98,38 +63,8 @@ public enum CommandType {
         this.insert(firstName, lastName, age);
     }
 
-    private ResultSet selectID(int id) throws SQLException {
-        return stmt.executeQuery("SELECT * FROM " + TABLE_NAME + " WHERE id = " + id);
-    }
-
-    private ResultSet selectAll() throws SQLException {
-        return stmt.executeQuery("SELECT * FROM " + TABLE_NAME);
-    }
-
     private void insert(String first_name, String last_name, int age) throws SQLException {
         stmt.executeUpdate("INSERT INTO " + TABLE_NAME + " (first_name, last_name, age)\n" +
                 "VALUES (\"" + first_name + "\", \"" + last_name + "\", " + age + ")");
-    }
-
-    private void deleteAll() throws SQLException {
-        stmt.executeUpdate("TRUNCATE " + TABLE_NAME);
-    }
-
-    private void deleteId(int id) throws SQLException {
-        stmt.executeUpdate("DELETE FROM " + TABLE_NAME + " WHERE id = " + id);
-    }
-
-    private void editId(int id, String edit) throws SQLException {
-        stmt.executeUpdate("UPDATE " + TABLE_NAME + " SET " + edit + " WHERE id = " + id);
-    }
-
-    private double avgAge() throws SQLException, NullPointerException {
-        ResultSet result = stmt.executeQuery("SELECT AVG(age) AS average_age FROM " + TABLE_NAME);
-        if (result.next()) {
-            String str = result.getString("average_age");
-            return Double.parseDouble(str);
-        } else {
-            return -1.0;
-        }
     }
 }
