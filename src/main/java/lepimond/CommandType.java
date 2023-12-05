@@ -15,7 +15,7 @@ public enum CommandType {
 
     public void run() throws SQLException, IOException {
         switch (this) {
-            case READ -> makeTable(readFile(scan.nextLine().substring(1)));
+            case READ -> makeTable(readFile(FILE_NAME));
             case DELETE -> deleteId(scan.nextInt());
             case DELETE_ALL -> deleteAll();
             case INSERT -> insert(scan.next(), scan.next(), scan.nextInt());
@@ -30,7 +30,7 @@ public enum CommandType {
 
     private void printHelp() {
         System.out.println("""
-    /read <название_файла>
+    /read
         Считывает JSON-файл со списком людей и записывает его в локальную реляционную БД
     /delete <id>
         Удаляет из БД запись с указанным id

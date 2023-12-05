@@ -8,11 +8,12 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 public class DBUtil {
-    public static final String DB_NAME = "my_db";
-    public static final String TABLE_NAME = "people";
-    public static final String DB_URL = "jdbc:mysql://localhost:3306/my_db";
-    public static final String USER = "root";
-    public static final String PASS = "root";
+    public static String DB_NAME;
+    public static String TABLE_NAME;
+    public static String FILE_NAME = "";
+    public static String DB_URL;
+    public static String USER;
+    public static String PASS;
     public static Statement stmt;
     public static Connection conn;
     public static final Scanner scan = new Scanner(System.in);

@@ -1,20 +1,26 @@
 package lepimond;
 
 import com.mysql.cj.jdbc.Driver;
+
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.InputMismatchException;
+import java.util.Properties;
 
 import static lepimond.DBUtil.*;
 
 public class Main {
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, IOException {
         new Main();
     }
 
-    private Main() throws SQLException {
+    private Main() throws SQLException, IOException {
+        readConfigs();
+
         DriverManager.registerDriver(new Driver());
         conn = DriverManager.getConnection(DB_URL, USER, PASS);
         stmt = conn.createStatement();
@@ -36,6 +42,24 @@ public class Main {
                 System.out.println("База данных пуста! Данная команда неприменима к пустой БД");
             }
         }
+    }
+
+    private void readConfigs() throws IOException {
+        File configFile = new File("config.properties");
+
+        FileReader reader = new FileReader(configFile);
+        Properties props = new Properties();
+        props.load(reader);
+
+        FILE_NAME = props.getProperty("file_name");
+
+        DB_NAME = props.getProperty("db_name");
+        TABLE_NAME = props.getProperty("table_name");
+        DB_URL = props.getProperty("db_url");
+        USER = props.getProperty("user");
+        PASS = props.getProperty("pass");
+
+        reader.close();
     }
 
     private void readNextCommand() throws SQLException, IOException, StringIndexOutOfBoundsException, NullPointerException {
