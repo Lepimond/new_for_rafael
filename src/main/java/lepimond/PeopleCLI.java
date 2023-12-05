@@ -31,7 +31,7 @@ public class PeopleCLI {
 
         while(true) {
             try {
-                this.readNextCommand();
+                readNextCommand();
             } catch (StringIndexOutOfBoundsException | InputMismatchException | SQLException var2) {
                 System.out.println("Ошибка в синтаксисе команды! Попробуйте ещё раз");
             } catch (IOException var3) {
