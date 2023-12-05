@@ -42,24 +42,6 @@ public class PeopleCLI {
         }
     }
 
-    private void readConfigs() throws IOException {
-        File configFile = new File("config.properties");
-
-        FileReader reader = new FileReader(configFile);
-        Properties props = new Properties();
-        props.load(reader);
-
-        FILE_NAME = props.getProperty("file_name");
-
-        DB_NAME = props.getProperty("db_name");
-        TABLE_NAME = props.getProperty("table_name");
-        DB_URL = props.getProperty("db_url");
-        USER = props.getProperty("user");
-        PASS = props.getProperty("pass");
-
-        reader.close();
-    }
-
     private void readNextCommand() throws Exception {
         String currentCommand = scan.next();
 
