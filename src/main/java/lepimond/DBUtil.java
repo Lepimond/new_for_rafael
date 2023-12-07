@@ -3,6 +3,7 @@ package lepimond;
 import lepimond.database_access.PersonDAO;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
@@ -51,9 +52,10 @@ public class DBUtil {
     public static void readConfigs() throws IOException {
         File configFile = new File("config.properties");
 
-        FileReader reader = new FileReader(configFile);
         Properties props = new Properties();
-        props.load(reader);
+        try (FileReader reader = new FileReader(configFile)) {
+            props.load(reader);
+        }
 
         FILE_NAME = props.getProperty("file_name");
 
@@ -62,7 +64,5 @@ public class DBUtil {
         DB_URL = props.getProperty("db_url");
         USER = props.getProperty("user");
         PASS = props.getProperty("pass");
-
-        reader.close();
     }
 }
