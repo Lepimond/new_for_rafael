@@ -1,6 +1,5 @@
 package lepimond;
 
-import com.mysql.jdbc.Driver;
 import lepimond.database_access.PersonDAO;
 
 import java.io.File;
@@ -38,24 +37,25 @@ public class DBUtil {
 
     public static boolean databaseExists(String databaseName) throws SQLException {
         DatabaseMetaData meta = conn.getMetaData();
-        ResultSet resultSet = meta.getCatalogs();
+        try (ResultSet resultSet = meta.getCatalogs()) {
+            String currentName;
+            do {
+                if (!resultSet.next()) {
+                    return false;
+                }
 
-        String currentName;
-        do {
-            if (!resultSet.next()) {
-                return false;
-            }
+                currentName = resultSet.getString(1);
+            } while(!currentName.equals(databaseName));
 
-            currentName = resultSet.getString(1);
-        } while(!currentName.equals(databaseName));
-
-        return true;
+            return true;
+        }
     }
 
     public static boolean tableExists(String tableName) throws SQLException {
         DatabaseMetaData meta = conn.getMetaData();
-        ResultSet resultSet = meta.getTables(null, null, tableName, new String[]{"TABLE"});
-        return resultSet.next();
+        try (ResultSet resultSet = meta.getTables(null, null, tableName, new String[]{"TABLE"})) {
+            return resultSet.next();
+        }
     }
 
     public static void readConfigs() throws IOException {

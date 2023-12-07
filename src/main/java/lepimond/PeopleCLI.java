@@ -1,11 +1,8 @@
 package lepimond;
 
-import com.mysql.cj.jdbc.Driver;
 import lepimond.commands.*;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.InputMismatchException;
 
@@ -15,7 +12,7 @@ import static lepimond.DBUtil.scan;
 public class PeopleCLI {
 
     public PeopleCLI() throws Exception {
-        try (conn; stmt) {
+        try (conn; stmt; scan) {
             if (databaseExists(DB_NAME)) {
                 stmt.executeUpdate("DROP DATABASE " + DB_NAME);
             }

@@ -9,40 +9,42 @@ import static lepimond.DBUtil.*;
 public class PersonDAO implements DAO<Person> {
     @Override
     public Person get(int id) throws SQLException {
-        ResultSet result = stmt.executeQuery("SELECT * FROM " + TABLE_NAME + " WHERE id = " + id);
-        result.next();
+        try (ResultSet result = stmt.executeQuery("SELECT * FROM " + TABLE_NAME + " WHERE id = " + id)) {
+            result.next();
 
-        return new Person(
+            return new Person(
                     result.getString(2),
                     result.getString(3),
                     result.getInt(4));
+        }
     }
 
     @Override
     public ArrayList<Person> getAll() throws SQLException {
         ArrayList<Person> resultingList = new ArrayList<>();
 
-        ResultSet result = stmt.executeQuery("SELECT * FROM " + TABLE_NAME);
+        try (ResultSet result = stmt.executeQuery("SELECT * FROM " + TABLE_NAME)) {
+            while (result.next()) {
+                resultingList.add(new Person(
+                        result.getString(2),
+                        result.getString(3),
+                        result.getInt(4)));
+            }
 
-        while (result.next()) {
-            resultingList.add(new Person(
-                    result.getString(2),
-                    result.getString(3),
-                    result.getInt(4)));
+            return resultingList;
         }
-
-        return resultingList;
     }
 
     @Override
     public double getAvg(String fieldName) throws SQLException {
-        ResultSet result = stmt.executeQuery("SELECT AVG(" + fieldName + ") AS average_" + fieldName +
-                " FROM " + TABLE_NAME);
-        if (result.next()) {
-            String str = result.getString("average_" + fieldName);
-            return Double.parseDouble(str);
-        } else {
-            return -1.0;
+        try (ResultSet result = stmt.executeQuery("SELECT AVG(" + fieldName + ") AS average_" + fieldName +
+                " FROM " + TABLE_NAME)) {
+            if (result.next()) {
+                String str = result.getString("average_" + fieldName);
+                return Double.parseDouble(str);
+            } else {
+                return -1.0;
+            }
         }
     }
 
