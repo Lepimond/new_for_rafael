@@ -4,6 +4,7 @@ import com.mysql.cj.jdbc.Driver;
 import lepimond.commands.*;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.InputMismatchException;
@@ -14,27 +15,24 @@ import static lepimond.DBUtil.scan;
 public class PeopleCLI {
 
     public PeopleCLI() throws Exception {
-        readConfigs();
+        try (conn; stmt) {
+            if (databaseExists(DB_NAME)) {
+                stmt.executeUpdate("DROP DATABASE " + DB_NAME);
+            }
 
-        DriverManager.registerDriver(new Driver());
-        conn = DriverManager.getConnection(DB_URL, USER, PASS);
-        stmt = conn.createStatement();
-        if (databaseExists(DB_NAME)) {
-            stmt.executeUpdate("DROP DATABASE " + DB_NAME);
-        }
+            stmt.executeUpdate("CREATE DATABASE " + DB_NAME);
+            stmt.executeUpdate("USE " + DB_NAME);
 
-        stmt.executeUpdate("CREATE DATABASE " + DB_NAME);
-        stmt.executeUpdate("USE " + DB_NAME);
-
-        while(true) {
-            try {
-                readNextCommand();
-            } catch (StringIndexOutOfBoundsException | InputMismatchException | SQLException var2) {
-                System.out.println("Ошибка в синтаксисе команды! Попробуйте ещё раз");
-            } catch (IOException var3) {
-                System.out.println("JSON-файл инвалиден!");
-            } catch (NullPointerException var4) {
-                System.out.println("База данных пуста! Данная команда неприменима к пустой БД");
+            while(true) {
+                try {
+                    readNextCommand();
+                } catch (StringIndexOutOfBoundsException | InputMismatchException | SQLException var2) {
+                    System.out.println("Ошибка в синтаксисе команды! Попробуйте ещё раз");
+                } catch (IOException var3) {
+                    System.out.println("JSON-файл инвалиден!");
+                } catch (NullPointerException var4) {
+                    System.out.println("База данных пуста! Данная команда неприменима к пустой БД");
+                }
             }
         }
     }

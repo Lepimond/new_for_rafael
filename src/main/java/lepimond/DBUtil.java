@@ -1,15 +1,12 @@
 package lepimond;
 
+import com.mysql.jdbc.Driver;
 import lepimond.database_access.PersonDAO;
 
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Properties;
 import java.util.Scanner;
 
@@ -20,8 +17,21 @@ public class DBUtil {
     public static String DB_URL;
     public static String USER;
     public static String PASS;
-    public static Statement stmt;
-    public static Connection conn;
+    public static final Statement stmt;
+    public static final Connection conn;
+
+    static {
+        try {
+            readConfigs();
+
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            stmt = conn.createStatement();
+        } catch (SQLException | IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    ;
     public static final Scanner scan = new Scanner(System.in);
 
     public static final PersonDAO dao = new PersonDAO();
