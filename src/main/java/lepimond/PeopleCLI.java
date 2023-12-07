@@ -3,13 +3,10 @@ package lepimond;
 import com.mysql.cj.jdbc.Driver;
 import lepimond.commands.*;
 
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.InputMismatchException;
-import java.util.Properties;
 
 import static lepimond.DBUtil.*;
 import static lepimond.DBUtil.scan;
