@@ -1,29 +1,34 @@
 package lepimond.commands;
 
+import lepimond.database_access.Person;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-import static lepimond.DBUtil.TABLE_NAME;
-import static lepimond.DBUtil.stmt;
+import static lepimond.DBUtil.*;
 
 public class SelectAllCommand implements Command {
 
     @Override
     public void run() throws SQLException {
-        ResultSet result = stmt.executeQuery("SELECT * FROM " + TABLE_NAME);
+        ArrayList<Person> people = dao.getAll();
 
         System.out.printf("----------------------------------------------------%n");
 
         System.out.printf("|  id  |   first_name    |    last_name    |  age  |%n");
         System.out.printf("----------------------------------------------------%n");
 
-        while(result.next()) {
+        int id = 1;
+        for (Person p: people) {
             System.out.printf("| %04d | %-15s | %-15s | %04d |%n",
-                    result.getInt(1),
-                    result.getString(2),
-                    result.getString(3),
-                    result.getInt(4));
+                    id,
+                    p.getFirstName(),
+                    p.getLastName(),
+                    p.getAge());
             System.out.printf("----------------------------------------------------%n");
+
+            id++;
         }
     }
 }

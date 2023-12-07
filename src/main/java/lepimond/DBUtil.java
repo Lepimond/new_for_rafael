@@ -1,5 +1,7 @@
 package lepimond;
 
+import lepimond.database_access.PersonDAO;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -21,6 +23,8 @@ public class DBUtil {
     public static Statement stmt;
     public static Connection conn;
     public static final Scanner scan = new Scanner(System.in);
+
+    public static final PersonDAO dao = new PersonDAO();
 
     public static boolean databaseExists(String databaseName) throws SQLException {
         DatabaseMetaData meta = conn.getMetaData();

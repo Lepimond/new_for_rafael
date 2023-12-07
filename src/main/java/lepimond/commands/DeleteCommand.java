@@ -2,8 +2,7 @@ package lepimond.commands;
 
 import java.sql.SQLException;
 
-import static lepimond.DBUtil.TABLE_NAME;
-import static lepimond.DBUtil.stmt;
+import static lepimond.DBUtil.*;
 
 public class DeleteCommand implements Command {
 
@@ -15,6 +14,6 @@ public class DeleteCommand implements Command {
 
     @Override
     public void run() throws SQLException {
-        stmt.executeUpdate("DELETE FROM " + TABLE_NAME + " WHERE id = " + id);
+        dao.delete(id);
     }
 }

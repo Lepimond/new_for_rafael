@@ -1,9 +1,10 @@
 package lepimond.commands;
 
+import lepimond.database_access.Person;
+
 import java.sql.SQLException;
 
-import static lepimond.DBUtil.TABLE_NAME;
-import static lepimond.DBUtil.stmt;
+import static lepimond.DBUtil.*;
 
 public class InsertCommand implements Command {
 
@@ -19,7 +20,6 @@ public class InsertCommand implements Command {
 
     @Override
     public void run() throws SQLException {
-        stmt.executeUpdate("INSERT INTO " + TABLE_NAME + " (first_name, last_name, age)\n" +
-                "VALUES (\"" + first_name + "\", \"" + last_name + "\", " + age + ")");
+        dao.save(new Person(first_name, last_name, age));
     }
 }

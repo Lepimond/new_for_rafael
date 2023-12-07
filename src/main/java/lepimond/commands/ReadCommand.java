@@ -1,6 +1,7 @@
 package lepimond.commands;
 
 import lepimond.DBUtil;
+import lepimond.database_access.Person;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -47,11 +48,6 @@ public class ReadCommand implements Command {
         String firstName = currentObject.getString("first_name");
         String lastName = currentObject.getString("last_name");
         int age = currentObject.getInt("age");
-        this.insert(firstName, lastName, age);
-    }
-
-    private void insert(String first_name, String last_name, int age) throws SQLException {
-        stmt.executeUpdate("INSERT INTO " + TABLE_NAME + " (first_name, last_name, age)\n" +
-                "VALUES (\"" + first_name + "\", \"" + last_name + "\", " + age + ")");
+        dao.save(new Person(firstName, lastName, age));
     }
 }
