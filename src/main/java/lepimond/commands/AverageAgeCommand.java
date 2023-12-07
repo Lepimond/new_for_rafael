@@ -1,6 +1,5 @@
 package lepimond.commands;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import static lepimond.DBUtil.*;

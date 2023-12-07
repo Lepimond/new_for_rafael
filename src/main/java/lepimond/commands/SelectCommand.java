@@ -2,7 +2,6 @@ package lepimond.commands;
 
 import lepimond.database_access.Person;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import static lepimond.DBUtil.*;
