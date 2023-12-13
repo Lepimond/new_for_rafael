@@ -5,11 +5,10 @@ import lepimond.exceptions.PeopleCLIException;
 
 import java.io.IOException;
 import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.InputMismatchException;
 
 import static lepimond.DBUtil.*;
 import static lepimond.DBUtil.scan;
+import static lepimond.config.PeopleCLIConfiguration.*;
 
 public class PeopleCLI {
 

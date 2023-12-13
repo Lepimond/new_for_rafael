@@ -60,23 +60,4 @@ public class DBUtil {
             throw new PeopleCLIException("Ошибка при проверке существования таблицы", e);
         }
     }
-
-    public static void readConfigs() throws PeopleCLIException {
-        File configFile = new File("config.properties");
-
-        Properties props = new Properties();
-        try (FileReader reader = new FileReader(configFile)) {
-            props.load(reader);
-        } catch (IOException e) {
-            throw new PeopleCLIException("Ошибка при чтении файлов конфигурации", e);
-        }
-
-        FILE_NAME = props.getProperty("file_name");
-
-        DB_NAME = props.getProperty("db_name");
-        TABLE_NAME = props.getProperty("table_name");
-        DB_URL = props.getProperty("db_url");
-        USER = props.getProperty("user");
-        PASS = props.getProperty("pass");
-    }
 }
