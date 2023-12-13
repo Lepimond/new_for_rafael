@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static lepimond.DBUtil.*;
+import static lepimond.PeopleCLI.executeQuery;
+import static lepimond.PeopleCLI.executeUpdate;
 
 public class PersonDAO implements DAO<Person> {
 
@@ -76,21 +78,5 @@ public class PersonDAO implements DAO<Person> {
     @Override
     public void update(int id, String updateContent) throws PeopleCLIException {
         executeUpdate("UPDATE " + TABLE_NAME + " SET " + updateContent + " WHERE id = " + id);
-    }
-
-    private ResultSet executeQuery(String query) throws PeopleCLIException {
-        try {
-            return stmt.executeQuery(query);
-        } catch (SQLException e) {
-            throw new PeopleCLIException("Ошибка в SQL-запросе", e);
-        }
-    }
-
-    private void executeUpdate(String update) throws PeopleCLIException {
-        try {
-            stmt.executeUpdate(update);
-        } catch (SQLException e) {
-            throw new PeopleCLIException("Ошибка в SQL-запросе", e);
-        }
     }
 }

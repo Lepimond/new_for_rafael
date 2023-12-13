@@ -1,6 +1,6 @@
 package lepimond.commands;
 
-import lepimond.DBUtil;
+import lepimond.PeopleCLI;
 import lepimond.database_access.Person;
 import lepimond.exceptions.PeopleCLIException;
 import org.json.JSONArray;
@@ -9,7 +9,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.sql.SQLException;
 
 import static lepimond.DBUtil.*;
 
@@ -29,12 +28,11 @@ public class ReadCommand implements Command {
     }
 
     private void makeTable(String jsonInput) throws PeopleCLIException {
-        try {
-            if (DBUtil.tableExists(TABLE_NAME)) {
-                stmt.executeUpdate("DROP TABLE " + TABLE_NAME);
+            if (PeopleCLI.tableExists(TABLE_NAME)) {
+                PeopleCLI.executeUpdate("DROP TABLE " + TABLE_NAME);
             }
 
-            stmt.executeUpdate("""
+            PeopleCLI.executeUpdate("""
                        CREATE TABLE people (
                        id int AUTO_INCREMENT,
                        first_name varchar(255),
@@ -47,10 +45,6 @@ public class ReadCommand implements Command {
             for(int i = 0; i < json.length(); ++i) {
                 insertLine(json, i);
             }
-        } catch (SQLException e) {
-            throw new PeopleCLIException("При попытке создания таблицы произошла ошибка, что-то не так с SQL-запросом", e);
-        }
-
     }
 
     private void insertLine(JSONArray json, int lineNumber) throws PeopleCLIException {

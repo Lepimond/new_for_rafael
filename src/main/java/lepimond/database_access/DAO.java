@@ -2,7 +2,6 @@ package lepimond.database_access;
 
 import lepimond.exceptions.PeopleCLIException;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public interface DAO<T> {
