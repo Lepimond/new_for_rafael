@@ -3,8 +3,6 @@ package lepimond.commands;
 import lepimond.database_access.Person;
 import lepimond.exceptions.PeopleCLIException;
 
-import java.sql.SQLException;
-
 import static lepimond.DBUtil.*;
 
 public class SelectCommand implements Command {

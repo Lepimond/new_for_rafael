@@ -3,7 +3,6 @@ package lepimond.commands;
 import lepimond.database_access.Person;
 import lepimond.exceptions.PeopleCLIException;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static lepimond.DBUtil.*;

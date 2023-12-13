@@ -3,12 +3,7 @@ package lepimond;
 import lepimond.database_access.PersonDAO;
 import lepimond.exceptions.PeopleCLIException;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.sql.*;
-import java.util.Properties;
 import java.util.Scanner;
 
 public class DBUtil {

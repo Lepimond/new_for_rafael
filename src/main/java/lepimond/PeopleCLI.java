@@ -3,7 +3,6 @@ package lepimond;
 import lepimond.commands.*;
 import lepimond.exceptions.PeopleCLIException;
 
-import java.io.IOException;
 import java.sql.DriverManager;
 
 import static lepimond.DBUtil.*;
