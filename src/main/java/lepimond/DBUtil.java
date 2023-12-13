@@ -16,21 +16,8 @@ public class DBUtil {
     public static String DB_URL;
     public static String USER;
     public static String PASS;
-    public static final Statement stmt;
-    public static final Connection conn;
-
-    static {
-        try {
-            readConfigs();
-
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            stmt = conn.createStatement();
-        } catch (SQLException | IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    ;
+    public static Statement stmt;
+    public static Connection conn;
     public static final Scanner scan = new Scanner(System.in);
 
     public static final PersonDAO dao = new PersonDAO();

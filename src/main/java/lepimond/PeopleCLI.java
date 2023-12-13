@@ -3,6 +3,7 @@ package lepimond;
 import lepimond.commands.*;
 
 import java.io.IOException;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.InputMismatchException;
 
@@ -12,7 +13,12 @@ import static lepimond.DBUtil.scan;
 public class PeopleCLI {
 
     public PeopleCLI() throws Exception {
-        try (conn; stmt; scan) {
+        readConfigs();
+
+        try {
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            stmt = conn.createStatement();
+
             if (databaseExists(DB_NAME)) {
                 stmt.executeUpdate("DROP DATABASE " + DB_NAME);
             }
@@ -31,7 +37,11 @@ public class PeopleCLI {
                     System.out.println("База данных пуста! Данная команда неприменима к пустой БД");
                 }
             }
+        } finally {
+            conn.close();
+            stmt.close();
         }
+
     }
 
     private void readNextCommand() throws Exception {
