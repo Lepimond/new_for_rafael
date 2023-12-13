@@ -1,6 +1,8 @@
 package lepimond.commands;
 
+import lepimond.exceptions.PeopleCLIException;
+
 public interface Command {
-    void run() throws Exception;
+    void run() throws PeopleCLIException;
 
 }

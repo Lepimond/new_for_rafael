@@ -1,5 +1,7 @@
 package lepimond.commands;
 
+import lepimond.exceptions.PeopleCLIException;
+
 import java.sql.SQLException;
 
 import static lepimond.DBUtil.*;
@@ -15,7 +17,7 @@ public class EditCommand implements Command {
     }
 
     @Override
-    public void run() throws SQLException {
+    public void run() throws PeopleCLIException {
         dao.update(id, edit);
     }
 }

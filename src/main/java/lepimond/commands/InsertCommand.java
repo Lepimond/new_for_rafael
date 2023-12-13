@@ -1,6 +1,7 @@
 package lepimond.commands;
 
 import lepimond.database_access.Person;
+import lepimond.exceptions.PeopleCLIException;
 
 import java.sql.SQLException;
 
@@ -19,7 +20,7 @@ public class InsertCommand implements Command {
     }
 
     @Override
-    public void run() throws SQLException {
+    public void run() throws PeopleCLIException {
         dao.save(new Person(first_name, last_name, age));
     }
 }

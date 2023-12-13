@@ -1,8 +1,10 @@
 package lepimond;
 
 import lepimond.database_access.PersonDAO;
+import lepimond.exceptions.PeopleCLIException;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.*;
@@ -22,8 +24,13 @@ public class DBUtil {
 
     public static final PersonDAO dao = new PersonDAO();
 
-    public static boolean databaseExists(String databaseName) throws SQLException {
-        DatabaseMetaData meta = conn.getMetaData();
+    public static boolean databaseExists(String databaseName) throws PeopleCLIException {
+        DatabaseMetaData meta;
+        try {
+            meta = conn.getMetaData();
+        } catch (SQLException e) {
+            throw new PeopleCLIException("Ошибка при проверке существования базы данных", e);
+        }
         try (ResultSet resultSet = meta.getCatalogs()) {
             String currentName;
             do {
@@ -35,22 +42,33 @@ public class DBUtil {
             } while(!currentName.equals(databaseName));
 
             return true;
+        } catch (SQLException e) {
+            throw new PeopleCLIException("Ошибка при проверке существования базы данных", e);
         }
     }
 
-    public static boolean tableExists(String tableName) throws SQLException {
-        DatabaseMetaData meta = conn.getMetaData();
+    public static boolean tableExists(String tableName) throws PeopleCLIException {
+        DatabaseMetaData meta;
+        try {
+            meta = conn.getMetaData();
+        } catch (SQLException e) {
+            throw new PeopleCLIException("Ошибка при проверке существования таблицы", e);
+        }
         try (ResultSet resultSet = meta.getTables(null, null, tableName, new String[]{"TABLE"})) {
             return resultSet.next();
+        } catch (SQLException e) {
+            throw new PeopleCLIException("Ошибка при проверке существования таблицы", e);
         }
     }
 
-    public static void readConfigs() throws IOException {
+    public static void readConfigs() throws PeopleCLIException {
         File configFile = new File("config.properties");
 
         Properties props = new Properties();
         try (FileReader reader = new FileReader(configFile)) {
             props.load(reader);
+        } catch (IOException e) {
+            throw new PeopleCLIException("Ошибка при чтении файлов конфигурации", e);
         }
 
         FILE_NAME = props.getProperty("file_name");

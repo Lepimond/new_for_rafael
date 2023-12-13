@@ -1,6 +1,7 @@
 package lepimond;
 
 import lepimond.commands.*;
+import lepimond.exceptions.PeopleCLIException;
 
 import java.io.IOException;
 import java.sql.DriverManager;
@@ -29,12 +30,8 @@ public class PeopleCLI {
             while(true) {
                 try {
                     readNextCommand();
-                } catch (StringIndexOutOfBoundsException | InputMismatchException | SQLException var2) {
-                    System.out.println("Ошибка в синтаксисе команды! Попробуйте ещё раз");
-                } catch (IOException var3) {
-                    System.out.println("JSON-файл инвалиден!");
-                } catch (NullPointerException var4) {
-                    System.out.println("База данных пуста! Данная команда неприменима к пустой БД");
+                } catch (PeopleCLIException e) {
+                    System.out.println(e.getMessage());
                 }
             }
         } finally {
@@ -44,7 +41,7 @@ public class PeopleCLI {
 
     }
 
-    private void readNextCommand() throws Exception {
+    private void readNextCommand() throws PeopleCLIException {
         String currentCommand = scan.next();
 
         if (databaseExists(DB_NAME)) {
@@ -60,7 +57,7 @@ public class PeopleCLI {
                     case "/select_all" -> command = new SelectAllCommand();
                     case "/select" -> command = new SelectCommand(scan.nextInt());
                     case "/help" -> command = new HelpCommand();
-                    default -> throw new SQLException();
+                    default -> throw new PeopleCLIException("У нас нет такой команды!");
                 }
                 command.run();
             }

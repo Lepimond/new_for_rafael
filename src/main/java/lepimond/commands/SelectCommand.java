@@ -1,6 +1,7 @@
 package lepimond.commands;
 
 import lepimond.database_access.Person;
+import lepimond.exceptions.PeopleCLIException;
 
 import java.sql.SQLException;
 
@@ -15,7 +16,7 @@ public class SelectCommand implements Command {
     }
 
     @Override
-    public void run() throws SQLException {
+    public void run() throws PeopleCLIException {
         Person person = dao.get(id);
 
         System.out.printf("----------------------------------------------------%n");

@@ -1,6 +1,7 @@
 package lepimond.commands;
 
 import lepimond.database_access.Person;
+import lepimond.exceptions.PeopleCLIException;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import static lepimond.DBUtil.*;
 public class SelectAllCommand implements Command {
 
     @Override
-    public void run() throws SQLException {
+    public void run() throws PeopleCLIException {
         ArrayList<Person> people = dao.getAll();
 
         System.out.printf("----------------------------------------------------%n");
