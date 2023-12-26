@@ -4,6 +4,7 @@ import lepimond.commands.*;
 import lepimond.exceptions.PeopleCLIException;
 
 import java.sql.*;
+import java.util.InputMismatchException;
 
 import static lepimond.DBUtil.*;
 import static lepimond.DBUtil.scan;
@@ -21,6 +22,8 @@ public class PeopleCLI {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             stmt = conn.createStatement();
 
+            logger.info("Program started!");
+
             if (databaseExists(DB_NAME)) {
                 stmt.executeUpdate("DROP DATABASE " + DB_NAME);
             }
@@ -30,16 +33,20 @@ public class PeopleCLI {
 
             while(true) {
                 try {
+                    logger.info("Starting to read next command...");
                     readNextCommand();
-                } catch (PeopleCLIException e) {
+                } catch (PeopleCLIException | InputMismatchException e) {
                     System.out.println(e.getMessage());
+                    logger.error(e.getClass().getName());
                 }
 
             }
         } catch (SQLException e) {
             System.out.println("Ошибка при попытке создания базы данных!");
+            logger.error(e.getClass().getName());
         } catch (PeopleCLIException e) {
-            System.out.println(e.getMessage());;
+            System.out.println(e.getMessage());
+            logger.error(e.getClass().getName());
         }
     }
 
