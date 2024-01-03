@@ -13,6 +13,7 @@ public class DBUtil {
     public static String DB_URL;
     public static String USER;
     public static String PASS;
+    public static String LOGS;
     public static final Scanner scan = new Scanner(System.in);
 
     public static final PersonDAO dao = new PersonDAO();

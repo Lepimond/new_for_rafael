@@ -27,5 +27,6 @@ public class PeopleCLIConfiguration {
         DB_URL = props.getProperty("db_url");
         USER = props.getProperty("user");
         PASS = props.getProperty("pass");
+        LOGS = props.getProperty("logs");
     }
 }
