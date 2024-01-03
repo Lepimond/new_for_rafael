@@ -1,8 +1,8 @@
 package lepimond;
 
 import lepimond.database_access.PersonDAO;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Scanner;
 
@@ -17,5 +17,5 @@ public class DBUtil {
     public static final Scanner scan = new Scanner(System.in);
 
     public static final PersonDAO dao = new PersonDAO();
-    public static Logger logger = LogManager.getLogger();
+    public static Logger logger = LoggerFactory.getLogger(DBUtil.class);
 }
