@@ -22,7 +22,7 @@ public class PeopleCLI {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             stmt = conn.createStatement();
 
-            logger.info("Program started!");
+            useLogger("Program started!");
 
             if (databaseExists(DB_NAME)) {
                 stmt.executeUpdate("DROP DATABASE " + DB_NAME);
@@ -33,20 +33,20 @@ public class PeopleCLI {
 
             while(true) {
                 try {
-                    logger.info("Starting to read next command...");
+                    useLogger("Starting to read next command...");
                     readNextCommand();
                 } catch (PeopleCLIException | InputMismatchException e) {
                     System.out.println(e.getMessage());
-                    logger.error(e.getClass().getName());
+                    useLogger(e.getClass().getName());
                 }
 
             }
         } catch (SQLException e) {
             System.out.println("Ошибка при попытке создания базы данных!");
-            logger.error(e.getClass().getName());
+            useLogger(e.getClass().getName());
         } catch (PeopleCLIException e) {
             System.out.println(e.getMessage());
-            logger.error(e.getClass().getName());
+            useLogger(e.getClass().getName());
         }
     }
 
@@ -123,6 +123,16 @@ public class PeopleCLI {
             return resultSet.next();
         } catch (SQLException e) {
             throw new PeopleCLIException("Ошибка при проверке существования таблицы", e);
+        }
+    }
+
+    private static void useLogger(String message) {
+        switch (LOG_LEVEL) {
+            case "trace" -> logger.trace(message);
+            case "info" -> logger.info(message);
+            case "debug" -> logger.debug(message);
+            case "error" -> logger.error(message);
+            case "warn" -> logger.warn(message);
         }
     }
 }

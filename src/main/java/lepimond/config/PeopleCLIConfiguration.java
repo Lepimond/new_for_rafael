@@ -28,5 +28,8 @@ public class PeopleCLIConfiguration {
         USER = props.getProperty("user");
         PASS = props.getProperty("pass");
         LOGS = props.getProperty("logs");
+
+        LOG_LEVEL = props.getProperty("log_level");
+        LOGS_FILE_NAME = props.getProperty("logs_file_name");
     }
 }
