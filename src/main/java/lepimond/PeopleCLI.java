@@ -2,9 +2,13 @@ package lepimond;
 
 import lepimond.commands.*;
 import lepimond.exceptions.PeopleCLIException;
+import org.apache.log4j.RollingFileAppender;
+import org.apache.log4j.SimpleLayout;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.InputMismatchException;
+import org.apache.log4j.Logger;
 
 import static lepimond.DBUtil.*;
 import static lepimond.DBUtil.scan;
