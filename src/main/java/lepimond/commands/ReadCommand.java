@@ -1,34 +1,38 @@
 package lepimond.commands;
 
-import lepimond.DBUtil;
+import lepimond.PeopleCLI;
 import lepimond.database_access.Person;
+import lepimond.exceptions.PeopleCLIException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.sql.SQLException;
 
 import static lepimond.DBUtil.*;
 
 public class ReadCommand implements Command {
     @Override
-    public void run() throws IOException, SQLException {
+    public void run() throws PeopleCLIException {
         makeTable(readFile(FILE_NAME));
     }
 
-    private String readFile(String path) throws IOException {
+    private String readFile(String path) throws PeopleCLIException {
         Path fileName = Path.of(path);
-        return Files.readString(fileName);
+        try {
+            return Files.readString(fileName);
+        } catch (IOException e) {
+            throw new PeopleCLIException("Ошибка при чтении файла", e);
+        }
     }
 
-    private void makeTable(String jsonInput) throws SQLException {
-        if (DBUtil.tableExists(TABLE_NAME)) {
-            stmt.executeUpdate("DROP TABLE " + TABLE_NAME);
-        }
+    private void makeTable(String jsonInput) throws PeopleCLIException {
+            if (PeopleCLI.tableExists(TABLE_NAME)) {
+                PeopleCLI.executeUpdate("DROP TABLE " + TABLE_NAME);
+            }
 
-        stmt.executeUpdate("""
+            PeopleCLI.executeUpdate("""
                        CREATE TABLE people (
                        id int AUTO_INCREMENT,
                        first_name varchar(255),
@@ -36,14 +40,14 @@ public class ReadCommand implements Command {
                        age int,
                        PRIMARY KEY(id)
                        );""");
-        JSONArray json = new JSONArray(jsonInput);
+            JSONArray json = new JSONArray(jsonInput);
 
-        for(int i = 0; i < json.length(); ++i) {
-            insertLine(json, i);
-        }
+            for(int i = 0; i < json.length(); ++i) {
+                insertLine(json, i);
+            }
     }
 
-    private void insertLine(JSONArray json, int lineNumber) throws SQLException {
+    private void insertLine(JSONArray json, int lineNumber) throws PeopleCLIException {
         JSONObject currentObject = json.getJSONObject(lineNumber);
         String firstName = currentObject.getString("first_name");
         String lastName = currentObject.getString("last_name");

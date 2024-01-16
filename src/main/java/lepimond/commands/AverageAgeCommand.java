@@ -1,12 +1,12 @@
 package lepimond.commands;
 
-import java.sql.SQLException;
+import lepimond.exceptions.PeopleCLIException;
 
 import static lepimond.DBUtil.*;
 
 public class AverageAgeCommand implements Command {
     @Override
-    public void run() throws SQLException, NullPointerException {
+    public void run() throws PeopleCLIException {
         System.out.println(dao.getAvg("age"));
     }
 }

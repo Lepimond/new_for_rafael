@@ -1,6 +1,6 @@
 package lepimond.commands;
 
-import java.sql.SQLException;
+import lepimond.exceptions.PeopleCLIException;
 
 import static lepimond.DBUtil.*;
 
@@ -13,7 +13,7 @@ public class DeleteCommand implements Command {
     }
 
     @Override
-    public void run() throws SQLException {
+    public void run() throws PeopleCLIException {
         dao.delete(id);
     }
 }
