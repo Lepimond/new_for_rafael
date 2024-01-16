@@ -1,6 +1,7 @@
 package lepimond.config;
 
 import lepimond.exceptions.PeopleCLIException;
+import lepimond.services.I18n;
 
 import java.io.File;
 import java.io.FileReader;
@@ -17,7 +18,7 @@ public class PeopleCLIConfiguration {
         try (FileReader reader = new FileReader(configFile)) {
             props.load(reader);
         } catch (IOException e) {
-            throw new PeopleCLIException("Ошибка при чтении файлов конфигурации", e);
+            throw new PeopleCLIException(I18n.getMessage("error_reading_config"), e);
         }
 
         FILE_NAME = props.getProperty("file_name");

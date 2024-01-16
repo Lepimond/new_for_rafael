@@ -2,13 +2,10 @@ package lepimond;
 
 import lepimond.commands.*;
 import lepimond.exceptions.PeopleCLIException;
-import org.apache.log4j.RollingFileAppender;
-import org.apache.log4j.SimpleLayout;
+import lepimond.services.I18n;
 
-import java.io.IOException;
 import java.sql.*;
 import java.util.InputMismatchException;
-import org.apache.log4j.Logger;
 
 import static lepimond.DBUtil.*;
 import static lepimond.DBUtil.scan;
@@ -26,7 +23,7 @@ public class PeopleCLI {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             stmt = conn.createStatement();
 
-            useLogger("Program started!");
+            useLogger(I18n.getMessage("program_start"));
 
             if (databaseExists(DB_NAME)) {
                 stmt.executeUpdate("DROP DATABASE " + DB_NAME);
@@ -37,7 +34,7 @@ public class PeopleCLI {
 
             while(true) {
                 try {
-                    useLogger("Starting to read next command...");
+                    useLogger(I18n.getMessage("reading_command"));
                     readNextCommand();
                 } catch (PeopleCLIException | InputMismatchException e) {
                     System.out.println(e.getMessage());
@@ -46,7 +43,7 @@ public class PeopleCLI {
 
             }
         } catch (SQLException e) {
-            System.out.println("Ошибка при попытке создания базы данных!");
+            System.out.println(I18n.getMessage("error_creating_db"));
             useLogger(e.getClass().getName());
         } catch (PeopleCLIException e) {
             System.out.println(e.getMessage());
@@ -70,7 +67,7 @@ public class PeopleCLI {
                     case "/select_all" -> command = new SelectAllCommand();
                     case "/select" -> command = new SelectCommand(scan.nextInt());
                     case "/help" -> command = new HelpCommand();
-                    default -> throw new PeopleCLIException("У нас нет такой команды!");
+                    default -> throw new PeopleCLIException(I18n.getMessage("no_such_command"));
                 }
                 command.run();
             }
@@ -81,7 +78,7 @@ public class PeopleCLI {
         try {
             return stmt.executeQuery(query);
         } catch (SQLException e) {
-            throw new PeopleCLIException("Ошибка в SQL-запросе", e);
+            throw new PeopleCLIException(I18n.getMessage("error_sql_query"), e);
         }
     }
 
@@ -89,7 +86,7 @@ public class PeopleCLI {
         try {
             stmt.executeUpdate(update);
         } catch (SQLException e) {
-            throw new PeopleCLIException("Ошибка в SQL-запросе", e);
+            throw new PeopleCLIException(I18n.getMessage("error_sql_query"), e);
         }
     }
 
@@ -98,7 +95,7 @@ public class PeopleCLI {
         try {
             meta = conn.getMetaData();
         } catch (SQLException e) {
-            throw new PeopleCLIException("Ошибка при проверке существования базы данных", e);
+            throw new PeopleCLIException(I18n.getMessage("error_check_db"), e);
         }
         try (ResultSet resultSet = meta.getCatalogs()) {
             String currentName;
@@ -112,7 +109,7 @@ public class PeopleCLI {
 
             return true;
         } catch (SQLException e) {
-            throw new PeopleCLIException("Ошибка при проверке существования базы данных", e);
+            throw new PeopleCLIException(I18n.getMessage("error_check_db"), e);
         }
     }
 
@@ -121,12 +118,12 @@ public class PeopleCLI {
         try {
             meta = conn.getMetaData();
         } catch (SQLException e) {
-            throw new PeopleCLIException("Ошибка при проверке существования таблицы", e);
+            throw new PeopleCLIException(I18n.getMessage("error_check_table"), e);
         }
         try (ResultSet resultSet = meta.getTables(null, null, tableName, new String[]{"TABLE"})) {
             return resultSet.next();
         } catch (SQLException e) {
-            throw new PeopleCLIException("Ошибка при проверке существования таблицы", e);
+            throw new PeopleCLIException(I18n.getMessage("error_check_table"), e);
         }
     }
 
