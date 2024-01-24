@@ -23,7 +23,7 @@ public class PeopleCLI {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             stmt = conn.createStatement();
 
-            useLogger(I18n.getMessage("program_start"));
+            useLogger("Program started");
 
             if (databaseExists(DB_NAME)) {
                 stmt.executeUpdate("DROP DATABASE " + DB_NAME);
@@ -34,7 +34,7 @@ public class PeopleCLI {
 
             while(true) {
                 try {
-                    useLogger(I18n.getMessage("reading_command"));
+                    useLogger("Reading command");
                     readNextCommand();
                 } catch (PeopleCLIException | InputMismatchException e) {
                     System.out.println(e.getMessage());
