@@ -38,16 +38,16 @@ public class PeopleCLI {
                     readNextCommand();
                 } catch (PeopleCLIException | InputMismatchException e) {
                     System.out.println(e.getMessage());
-                    useLogger(e.getClass().getName());
+                    useLogger(e.getMessage());
                 }
 
             }
         } catch (SQLException e) {
             System.out.println(I18n.getMessage("error_creating_db"));
-            useLogger(e.getClass().getName());
+            useLogger(e.getMessage());
         } catch (PeopleCLIException e) {
             System.out.println(e.getMessage());
-            useLogger(e.getClass().getName());
+            useLogger(e.getMessage());
         }
     }
 
