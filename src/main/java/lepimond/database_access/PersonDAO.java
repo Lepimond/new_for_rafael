@@ -30,7 +30,9 @@ public class PersonDAO implements DAO<Person> {
     public ArrayList<Person> getAll() throws PeopleCLIException {
         ArrayList<Person> resultingList = new ArrayList<>();
 
-        try (ResultSet result = executeQuery("SELECT * FROM " + TABLE_NAME)) {
+        try {
+            ResultSet result = executeQuery("SELECT * FROM " + TABLE_NAME);
+
             while (result.next()) {
                 resultingList.add(new Person(
                         result.getString(2),
@@ -40,6 +42,7 @@ public class PersonDAO implements DAO<Person> {
 
             return resultingList;
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
             throw new PeopleCLIException("Ошибка в SQL-запросе", e);
         }
     }

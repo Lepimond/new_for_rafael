@@ -75,11 +75,13 @@ public class PeopleCLI {
     }
 
     public static ResultSet executeQuery(String query) throws PeopleCLIException {
+        ResultSet resultSet;
         try {
-            return stmt.executeQuery(query);
+            resultSet = stmt.executeQuery(query);
         } catch (SQLException e) {
-            throw new PeopleCLIException(I18n.getMessage("error_sql_query"), e);
+            throw new PeopleCLIException("Ошибка в SQL-запросе");
         }
+        return resultSet;
     }
 
     public static void executeUpdate(String update) throws PeopleCLIException {

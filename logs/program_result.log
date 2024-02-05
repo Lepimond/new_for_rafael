@@ -4,3 +4,171 @@
 2024-01-16 17:52:07.261 [main] WARN  lepimond.DBUtil - Начинаем чтение следующей команды...
 2024-01-16 17:53:23.240 [main] WARN  lepimond.DBUtil - Программа запущена!
 2024-01-16 17:53:23.264 [main] WARN  lepimond.DBUtil - Начинаем чтение следующей команды...
+2024-01-25 12:48:42.186 [main] WARN  lepimond.DBUtil - Program started
+2024-01-25 12:48:42.285 [main] WARN  lepimond.DBUtil - Reading command
+2024-01-25 12:48:45.238 [main] WARN  lepimond.DBUtil - Reading command
+2024-01-25 12:48:46.653 [main] WARN  lepimond.DBUtil - Reading command
+2024-01-25 12:48:48.962 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-01-25 12:48:48.963 [main] WARN  lepimond.DBUtil - Reading command
+2024-01-25 12:49:39.584 [main] WARN  lepimond.DBUtil - Program started
+2024-01-25 12:49:39.654 [main] WARN  lepimond.DBUtil - Reading command
+2024-01-25 12:49:42.180 [main] WARN  lepimond.DBUtil - Reading command
+2024-01-25 12:49:43.284 [main] WARN  lepimond.DBUtil - Reading command
+2024-01-25 12:49:45.715 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-01-25 12:49:45.716 [main] WARN  lepimond.DBUtil - Reading command
+2024-01-25 12:49:54.311 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-01-25 12:49:54.311 [main] WARN  lepimond.DBUtil - Reading command
+2024-01-25 12:49:58.388 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-01-25 12:49:58.389 [main] WARN  lepimond.DBUtil - Reading command
+2024-01-25 12:50:02.924 [main] WARN  lepimond.DBUtil - Reading command
+2024-01-25 12:50:05.079 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-01-25 12:50:05.080 [main] WARN  lepimond.DBUtil - Reading command
+2024-01-25 12:50:30.835 [main] WARN  lepimond.DBUtil - Reading command
+2024-01-25 12:50:31.930 [main] WARN  lepimond.DBUtil - Нет такой команды!
+2024-01-25 12:50:31.930 [main] WARN  lepimond.DBUtil - Reading command
+2024-01-25 12:50:34.749 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-01-25 12:50:34.749 [main] WARN  lepimond.DBUtil - Reading command
+2024-01-25 12:53:00.908 [main] WARN  lepimond.DBUtil - Program started
+2024-01-25 12:53:00.975 [main] WARN  lepimond.DBUtil - Reading command
+2024-01-25 12:53:03.770 [main] WARN  lepimond.DBUtil - Reading command
+2024-01-25 12:53:05.033 [main] WARN  lepimond.DBUtil - Reading command
+2024-01-25 12:53:07.351 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-01-25 12:53:07.351 [main] WARN  lepimond.DBUtil - Reading command
+2024-01-25 12:53:27.494 [main] WARN  lepimond.DBUtil - Program started
+2024-01-25 12:53:27.547 [main] WARN  lepimond.DBUtil - Reading command
+2024-01-25 12:53:30.121 [main] WARN  lepimond.DBUtil - Reading command
+2024-01-25 12:53:31.318 [main] WARN  lepimond.DBUtil - Reading command
+2024-01-25 12:53:51.538 [main] WARN  lepimond.DBUtil - Program started
+2024-01-25 12:53:51.606 [main] WARN  lepimond.DBUtil - Reading command
+2024-01-25 12:53:53.317 [main] WARN  lepimond.DBUtil - Reading command
+2024-01-25 12:53:54.400 [main] WARN  lepimond.DBUtil - Reading command
+2024-01-25 12:53:56.574 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-01-25 12:53:56.574 [main] WARN  lepimond.DBUtil - Reading command
+2024-01-25 12:54:00.598 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-01-25 12:54:00.598 [main] WARN  lepimond.DBUtil - Reading command
+2024-01-25 15:38:34.178 [main] WARN  lepimond.DBUtil - Program started
+2024-01-25 15:38:34.209 [main] WARN  lepimond.DBUtil - Reading command
+2024-01-25 15:38:37.732 [main] WARN  lepimond.DBUtil - Reading command
+2024-01-25 15:38:39.440 [main] WARN  lepimond.DBUtil - Reading command
+2024-01-25 15:38:43.430 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-01-25 15:38:43.430 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 15:35:17.923 [main] WARN  lepimond.DBUtil - Program started
+2024-02-05 15:35:18.054 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 15:35:22.457 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 15:35:25.977 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 15:35:32.408 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 15:35:45.029 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-02-05 15:35:45.029 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 15:36:25.887 [main] WARN  lepimond.DBUtil - Program started
+2024-02-05 15:36:25.924 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 15:36:30.561 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 15:36:33.558 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 15:36:39.011 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-02-05 15:36:39.011 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 15:36:41.679 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-02-05 15:36:41.679 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 15:36:46.046 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-02-05 15:36:46.046 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 15:36:50.306 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-02-05 15:36:50.307 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 15:40:05.799 [main] WARN  lepimond.DBUtil - Program started
+2024-02-05 15:40:05.837 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 15:40:11.570 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 15:40:14.658 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-02-05 15:40:14.658 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 15:40:28.060 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-02-05 15:40:28.060 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 15:41:39.349 [main] WARN  lepimond.DBUtil - Program started
+2024-02-05 15:41:39.382 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 15:41:41.632 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 15:41:48.155 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 15:41:48.161 [main] WARN  lepimond.DBUtil - Нет такой команды!
+2024-02-05 15:41:48.161 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 15:42:06.546 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-02-05 15:42:06.547 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 15:43:13.480 [main] WARN  lepimond.DBUtil - Program started
+2024-02-05 15:43:13.518 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 15:44:56.709 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 15:44:59.716 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 15:45:03.011 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 15:45:23.542 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 15:45:26.312 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 15:45:28.098 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-02-05 15:45:28.098 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 15:45:32.008 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-02-05 15:45:32.008 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 15:58:27.468 [main] WARN  lepimond.DBUtil - Program started
+2024-02-05 15:58:27.514 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 15:58:43.727 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 15:58:46.296 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 15:58:58.711 [main] WARN  lepimond.DBUtil - Program started
+2024-02-05 15:58:58.743 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 15:59:02.733 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 15:59:06.811 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:00:17.171 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-02-05 16:00:17.171 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:01:03.304 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-02-05 16:01:03.304 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:01:06.352 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-02-05 16:01:06.352 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:01:11.749 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-02-05 16:01:11.749 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:01:38.567 [main] WARN  lepimond.DBUtil - Program started
+2024-02-05 16:01:38.598 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:01:40.053 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:01:41.872 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-02-05 16:01:41.872 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:03:43.196 [main] WARN  lepimond.DBUtil - Program started
+2024-02-05 16:03:43.222 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:03:47.220 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:03:48.536 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:03:52.491 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-02-05 16:03:52.491 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:04:39.698 [main] WARN  lepimond.DBUtil - Program started
+2024-02-05 16:04:39.724 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:04:41.732 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:04:43.145 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:05:01.949 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-02-05 16:05:01.950 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:05:05.089 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-02-05 16:05:05.089 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:05:19.284 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-02-05 16:05:19.284 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:07:55.530 [main] WARN  lepimond.DBUtil - Program started
+2024-02-05 16:07:55.559 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:08:02.021 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:08:03.616 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-02-05 16:08:03.616 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:08:07.377 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-02-05 16:08:07.377 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:10:26.193 [main] WARN  lepimond.DBUtil - Program started
+2024-02-05 16:10:26.227 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:10:27.203 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:10:57.022 [main] WARN  lepimond.DBUtil - Program started
+2024-02-05 16:10:57.048 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:10:59.409 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:11:20.843 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-02-05 16:11:20.843 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:13:06.952 [main] WARN  lepimond.DBUtil - Program started
+2024-02-05 16:13:06.980 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:13:10.476 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:13:12.029 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-02-05 16:13:12.029 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:16:15.500 [main] WARN  lepimond.DBUtil - Program started
+2024-02-05 16:16:15.536 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:16:16.719 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:16:17.920 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:16:19.718 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-02-05 16:16:19.718 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:17:03.651 [main] WARN  lepimond.DBUtil - Program started
+2024-02-05 16:17:03.681 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:17:09.248 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:17:11.832 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:18:14.077 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:18:16.459 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-02-05 16:18:16.459 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:31:30.357 [main] WARN  lepimond.DBUtil - Program started
+2024-02-05 16:31:30.383 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:31:34.243 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:31:36.205 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:31:40.795 [main] WARN  lepimond.DBUtil - Reading command
