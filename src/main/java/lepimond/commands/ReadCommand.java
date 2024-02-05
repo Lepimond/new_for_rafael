@@ -44,7 +44,6 @@ public class ReadCommand implements Command {
 
             for(int i = 0; i < json.length(); ++i) {
                 insertLine(json, i);
-                System.out.println("Inserted line " + i);
             }
     }
 
@@ -53,8 +52,6 @@ public class ReadCommand implements Command {
         String firstName = currentObject.getString("first_name");
         String lastName = currentObject.getString("last_name");
         int age = currentObject.getInt("age");
-
-        System.out.println(firstName + " " + lastName + " " + age);
 
         dao.save(new Person(firstName, lastName, age));
     }
