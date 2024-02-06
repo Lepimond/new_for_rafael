@@ -184,3 +184,63 @@
 2024-02-05 16:36:57.539 [main] WARN  lepimond.DBUtil - Reading command
 2024-02-05 16:36:59.335 [main] WARN  lepimond.DBUtil - Reading command
 2024-02-05 16:37:01.550 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:44:11.712 [main] WARN  lepimond.DBUtil - Program started
+2024-02-05 16:44:11.744 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:44:13.084 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:45:34.995 [main] WARN  lepimond.DBUtil - Program started
+2024-02-05 16:45:35.023 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:45:35.858 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:45:38.519 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:45:40.526 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:49:23.271 [main] WARN  lepimond.DBUtil - Program started
+2024-02-05 16:49:23.299 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:49:24.432 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:49:27.950 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 16:49:29.212 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 23:55:04.158 [main] WARN  lepimond.DBUtil - Program started
+2024-02-05 23:55:04.220 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 23:55:05.838 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 23:55:07.293 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-05 23:55:13.396 [main] WARN  lepimond.DBUtil - Ошибка в SQL-запросе
+2024-02-05 23:55:13.396 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-06 10:59:10.340 [main] WARN  lepimond.DBUtil - Program started
+2024-02-06 10:59:10.417 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-06 10:59:12.769 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-06 10:59:14.204 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-06 10:59:15.684 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-06 10:59:19.225 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-06 10:59:23.161 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-06 11:01:49.615 [main] WARN  lepimond.DBUtil - Program started
+2024-02-06 11:01:49.644 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-06 11:01:51.776 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-06 11:01:52.694 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-06 11:01:54.931 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-06 11:05:19.648 [main] WARN  lepimond.DBUtil - Program started
+2024-02-06 11:05:19.675 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-06 11:05:21.107 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-06 11:05:24.436 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-06 11:06:17.144 [main] WARN  lepimond.DBUtil - Program started
+2024-02-06 11:06:17.178 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-06 11:06:22.424 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-06 11:06:24.033 [main] WARN  lepimond.DBUtil - java.sql.SQLException: Illegal operation on empty result set.
+2024-02-06 11:07:23.707 [main] WARN  lepimond.DBUtil - Program started
+2024-02-06 11:07:23.743 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-06 11:07:25.871 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-06 11:07:27.312 [main] WARN  lepimond.DBUtil - java.sql.SQLException: Illegal operation on empty result set.
+2024-02-06 11:07:37.517 [main] WARN  lepimond.DBUtil - Program started
+2024-02-06 11:07:37.547 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-06 11:07:39.376 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-06 11:07:40.979 [main] WARN  lepimond.DBUtil - java.sql.SQLException: Illegal operation on empty result set.
+2024-02-06 11:08:20.068 [main] WARN  lepimond.DBUtil - Program started
+2024-02-06 11:08:20.092 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-06 11:08:21.542 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-06 11:08:23.681 [main] WARN  lepimond.DBUtil - java.sql.SQLException: Illegal operation on empty result set.
+2024-02-06 11:08:23.681 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-06 11:09:00.182 [main] WARN  lepimond.DBUtil - Program started
+2024-02-06 11:09:00.210 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-06 11:09:01.782 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-06 11:09:04.224 [main] WARN  lepimond.DBUtil - java.sql.SQLException: Illegal operation on empty result set.
+2024-02-06 11:09:04.225 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-06 11:09:08.494 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-06 11:09:11.485 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-06 11:09:16.123 [main] WARN  lepimond.DBUtil - Reading command

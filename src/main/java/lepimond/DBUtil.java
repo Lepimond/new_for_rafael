@@ -19,4 +19,8 @@ public class DBUtil {
 
     public static final PersonDAO dao = new PersonDAO();
     public static Logger logger = LoggerFactory.getLogger(DBUtil.class);
+
+    public static void closeScanner() {
+        scan.close();
+    }
 }

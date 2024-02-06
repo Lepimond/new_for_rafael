@@ -3,9 +3,11 @@ package lepimond;
 import lepimond.commands.*;
 import lepimond.exceptions.PeopleCLIException;
 import lepimond.services.I18n;
+import org.apache.logging.log4j.Level;
 
 import java.sql.*;
 import java.util.InputMismatchException;
+import java.util.function.Consumer;
 
 import static lepimond.DBUtil.*;
 import static lepimond.DBUtil.scan;
@@ -36,8 +38,8 @@ public class PeopleCLI {
                 try {
                     useLogger("Reading command");
                     readNextCommand();
-                } catch (PeopleCLIException | InputMismatchException e) {
-                    System.out.println(e.getMessage());
+                } catch (PeopleCLIException | RuntimeException e) {
+                    System.out.println(I18n.getMessage("error_sql_query"));
                     useLogger(e.getMessage());
                 }
 
@@ -46,8 +48,10 @@ public class PeopleCLI {
             System.out.println(I18n.getMessage("error_creating_db"));
             useLogger(e.getMessage());
         } catch (PeopleCLIException e) {
-            System.out.println(e.getMessage());
+            System.out.println(I18n.getMessage("error_sql_query"));
             useLogger(e.getMessage());
+        } finally {
+            closeScanner();
         }
     }
 
@@ -62,7 +66,7 @@ public class PeopleCLI {
                     case "/delete" -> command = new DeleteCommand(scan.nextInt());
                     case "/delete_all" -> command = new DeleteAllCommand();
                     case "/insert" -> command = new InsertCommand(scan.next(), scan.next(), scan.nextInt());
-                    case "/edit" -> command = new EditCommand(scan.nextInt(), scan.nextLine());
+                    case "/edit" -> command = new EditCommand(scan.nextInt(), scan.next());
                     case "/avg_age" -> command = new AverageAgeCommand();
                     case "/select_all" -> command = new SelectAllCommand();
                     case "/select" -> command = new SelectCommand(scan.nextInt());
@@ -74,14 +78,12 @@ public class PeopleCLI {
         }
     }
 
-    public static ResultSet executeQuery(String query) throws PeopleCLIException {
-        ResultSet resultSet;
-        try {
-            resultSet = stmt.executeQuery(query);
+    public static void executeQuery(String query, Consumer resultProcessor) throws PeopleCLIException {
+        try (ResultSet resultSet = stmt.executeQuery(query)) {
+            resultProcessor.accept(resultSet);
         } catch (SQLException e) {
             throw new PeopleCLIException("Ошибка в SQL-запросе");
         }
-        return resultSet;
     }
 
     public static void executeUpdate(String update) throws PeopleCLIException {
