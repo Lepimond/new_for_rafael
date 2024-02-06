@@ -6,7 +6,6 @@ import lepimond.services.I18n;
 import org.apache.log4j.*;
 
 import java.sql.*;
-import java.util.InputMismatchException;
 import java.util.function.Consumer;
 
 import static lepimond.DBUtil.*;
