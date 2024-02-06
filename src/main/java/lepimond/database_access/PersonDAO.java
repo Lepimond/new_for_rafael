@@ -14,49 +14,73 @@ public class PersonDAO implements DAO<Person> {
 
     @Override
     public Person get(int id) throws PeopleCLIException {
-        try (ResultSet result = executeQuery("SELECT * FROM " + TABLE_NAME + " WHERE id = " + id)) {
-            result.next();
+        final Person[] person = {null};
 
-            return new Person(
-                    result.getString(2),
-                    result.getString(3),
-                    result.getInt(4));
-        } catch (SQLException e) {
-            throw new PeopleCLIException("Ошибка в SQL-запросе", e);
-        }
+        executeQuery("SELECT * FROM " + TABLE_NAME + " WHERE id = " + id, result -> {
+
+
+            try (ResultSet resultSet = (ResultSet) result) {
+                resultSet.next();
+
+                person[0] = new Person(
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getInt(4));
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
+
+        });
+        return person[0];
     }
 
     @Override
     public ArrayList<Person> getAll() throws PeopleCLIException {
         ArrayList<Person> resultingList = new ArrayList<>();
 
-        try (ResultSet result = executeQuery("SELECT * FROM " + TABLE_NAME)) {
-            while (result.next()) {
-                resultingList.add(new Person(
-                        result.getString(2),
-                        result.getString(3),
-                        result.getInt(4)));
+        executeQuery("SELECT * FROM " + TABLE_NAME, result -> {
+
+
+            try (ResultSet resultSet = (ResultSet) result) {
+                while (resultSet.next()) {
+                    resultingList.add(new Person(
+                            resultSet.getString(2),
+                            resultSet.getString(3),
+                            resultSet.getInt(4)));
+                }
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+                throw new RuntimeException("Ошибка в SQL-запросе", e);
             }
 
-            return resultingList;
-        } catch (SQLException e) {
-            throw new PeopleCLIException("Ошибка в SQL-запросе", e);
-        }
+
+        });
+
+        return resultingList;
     }
 
     @Override
     public double getAvg(String fieldName) throws PeopleCLIException {
-        try (ResultSet result = executeQuery("SELECT AVG(" + fieldName + ") AS average_" + fieldName +
-                " FROM " + TABLE_NAME)) {
-            if (result.next()) {
-                String str = result.getString("average_" + fieldName);
-                return Double.parseDouble(str);
-            } else {
-                return -1.0;
+        final Double[] avg = {null};
+
+        executeQuery("SELECT AVG(" + fieldName + ") AS average_" + fieldName +
+                " FROM " + TABLE_NAME, result -> {
+
+
+            try (ResultSet resultSet = (ResultSet) result) {
+                if (resultSet.next()) {
+                    String str = resultSet.getString("average_" + fieldName);
+                    avg[0] = Double.parseDouble(str);
+                } else {
+                    avg[0] = -1.0;
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException("Ошибка в SQL-запросе", e);
             }
-        } catch (SQLException e) {
-            throw new PeopleCLIException("Ошибка в SQL-запросе", e);
-        }
+        });
+
+        return avg[0];
     }
 
     @Override

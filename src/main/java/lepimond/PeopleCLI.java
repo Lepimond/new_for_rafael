@@ -3,9 +3,10 @@ package lepimond;
 import lepimond.commands.*;
 import lepimond.exceptions.PeopleCLIException;
 import lepimond.services.I18n;
+import org.apache.log4j.*;
 
 import java.sql.*;
-import java.util.InputMismatchException;
+import java.util.function.Consumer;
 
 import static lepimond.DBUtil.*;
 import static lepimond.DBUtil.scan;
@@ -19,11 +20,19 @@ public class PeopleCLI {
     public PeopleCLI() {
         try {
             readConfigs();
+        } catch (PeopleCLIException e) {
+            System.out.println(I18n.getMessage("error_reading_config"));
+            logger.error(e.getMessage());
+        }
 
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            stmt = conn.createStatement();
+        try (Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+        Statement statement = connection.createStatement()) {
+            conn = connection;
+            stmt = statement;
 
-            useLogger(I18n.getMessage("program_start"));
+            initLogger();
+
+            logger.info("Program started");
 
             if (databaseExists(DB_NAME)) {
                 stmt.executeUpdate("DROP DATABASE " + DB_NAME);
@@ -34,20 +43,22 @@ public class PeopleCLI {
 
             while(true) {
                 try {
-                    useLogger(I18n.getMessage("reading_command"));
+                    logger.info("Reading command");
                     readNextCommand();
-                } catch (PeopleCLIException | InputMismatchException e) {
-                    System.out.println(e.getMessage());
-                    useLogger(e.getClass().getName());
+                } catch (PeopleCLIException | RuntimeException e) {
+                    System.out.println(I18n.getMessage("error_sql_query"));
+                    logger.error(e.getMessage());
                 }
 
             }
         } catch (SQLException e) {
             System.out.println(I18n.getMessage("error_creating_db"));
-            useLogger(e.getClass().getName());
+            logger.error(e.getMessage());
         } catch (PeopleCLIException e) {
-            System.out.println(e.getMessage());
-            useLogger(e.getClass().getName());
+            System.out.println(I18n.getMessage("error_sql_query"));
+            logger.error(e.getMessage());
+        } finally {
+            closeScanner();
         }
     }
 
@@ -62,7 +73,7 @@ public class PeopleCLI {
                     case "/delete" -> command = new DeleteCommand(scan.nextInt());
                     case "/delete_all" -> command = new DeleteAllCommand();
                     case "/insert" -> command = new InsertCommand(scan.next(), scan.next(), scan.nextInt());
-                    case "/edit" -> command = new EditCommand(scan.nextInt(), scan.nextLine());
+                    case "/edit" -> command = new EditCommand(scan.nextInt(), scan.next());
                     case "/avg_age" -> command = new AverageAgeCommand();
                     case "/select_all" -> command = new SelectAllCommand();
                     case "/select" -> command = new SelectCommand(scan.nextInt());
@@ -74,11 +85,11 @@ public class PeopleCLI {
         }
     }
 
-    public static ResultSet executeQuery(String query) throws PeopleCLIException {
-        try {
-            return stmt.executeQuery(query);
+    public static void executeQuery(String query, Consumer resultProcessor) throws PeopleCLIException {
+        try (ResultSet resultSet = stmt.executeQuery(query)) {
+            resultProcessor.accept(resultSet);
         } catch (SQLException e) {
-            throw new PeopleCLIException(I18n.getMessage("error_sql_query"), e);
+            throw new PeopleCLIException("Ошибка в SQL-запросе");
         }
     }
 
@@ -127,13 +138,41 @@ public class PeopleCLI {
         }
     }
 
-    private static void useLogger(String message) {
-        switch (LOG_LEVEL) {
-            case "trace" -> logger.trace(message);
-            case "info" -> logger.info(message);
-            case "debug" -> logger.debug(message);
-            case "error" -> logger.error(message);
-            case "warn" -> logger.warn(message);
+    private static void initLogger() {
+        String PATTERN = "%d [%p|%C{1}] %m%n";
+
+        ConsoleAppender consoleAppender = new ConsoleAppender();
+        consoleAppender.setLayout(new PatternLayout(PATTERN));
+        consoleAppender.setThreshold(Level.ALL);
+        consoleAppender.activateOptions();
+
+        FileAppender fileAppender = new FileAppender();
+        fileAppender.setName("FileLogger");
+        fileAppender.setFile("logs/" + LOG_FILE_NAME);
+        fileAppender.setLayout(new PatternLayout(PATTERN));
+        fileAppender.setThreshold(Level.ALL);
+        fileAppender.setAppend(true);
+        fileAppender.activateOptions();
+
+        if (CONSOLE_LOG.equals("yes")) {
+            BasicConfigurator.configure(consoleAppender);
         }
+
+        if (FILE_LOG.equals("yes")) {
+            BasicConfigurator.configure(fileAppender);
+        }
+
+        Level logLevel = null;
+        switch (LOG_LEVEL) {
+            case "trace" -> logLevel = Level.TRACE;
+            case "debug" -> logLevel = Level.DEBUG;
+            case "info" -> logLevel = Level.INFO;
+            case "warn" -> logLevel = Level.WARN;
+            case "error" -> logLevel = Level.ERROR;
+            case "fatal" -> logLevel = Level.FATAL;
+            case "all" -> logLevel = Level.ALL;
+            case "off" -> logLevel = Level.OFF;
+        }
+        logger.setLevel(logLevel);
     }
 }

@@ -52,6 +52,7 @@ public class ReadCommand implements Command {
         String firstName = currentObject.getString("first_name");
         String lastName = currentObject.getString("last_name");
         int age = currentObject.getInt("age");
+
         dao.save(new Person(firstName, lastName, age));
     }
 }
