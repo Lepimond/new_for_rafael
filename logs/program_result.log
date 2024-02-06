@@ -244,3 +244,23 @@
 2024-02-06 11:09:08.494 [main] WARN  lepimond.DBUtil - Reading command
 2024-02-06 11:09:11.485 [main] WARN  lepimond.DBUtil - Reading command
 2024-02-06 11:09:16.123 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-06 11:23:33.777 [main] INFO  lepimond.DBUtil - test
+2024-02-06 11:23:33.779 [main] ERROR lepimond.DBUtil - test
+2024-02-06 11:23:33.779 [main] WARN  lepimond.DBUtil - test
+2024-02-06 11:23:34.049 [main] WARN  lepimond.DBUtil - Program started
+2024-02-06 11:23:34.076 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-06 11:24:31.256 [main] INFO  lepimond.DBUtil - test
+2024-02-06 11:24:31.258 [main] ERROR lepimond.DBUtil - test
+2024-02-06 11:24:31.258 [main] WARN  lepimond.DBUtil - test
+2024-02-06 11:24:31.518 [main] WARN  lepimond.DBUtil - Program started
+2024-02-06 11:24:31.539 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-06 11:26:50.391 [main] INFO  lepimond.DBUtil - test
+2024-02-06 11:26:50.394 [main] ERROR lepimond.DBUtil - test
+2024-02-06 11:26:50.394 [main] WARN  lepimond.DBUtil - test
+2024-02-06 11:26:50.646 [main] WARN  lepimond.DBUtil - Program started
+2024-02-06 11:26:50.671 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-06 11:28:52.451 [main] INFO  lepimond.DBUtil - test
+2024-02-06 11:28:52.454 [main] ERROR lepimond.DBUtil - test
+2024-02-06 11:28:52.454 [main] WARN  lepimond.DBUtil - test
+2024-02-06 11:28:52.724 [main] WARN  lepimond.DBUtil - Program started
+2024-02-06 11:28:52.749 [main] WARN  lepimond.DBUtil - Reading command

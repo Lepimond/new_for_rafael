@@ -3,7 +3,9 @@ package lepimond;
 import lepimond.commands.*;
 import lepimond.exceptions.PeopleCLIException;
 import lepimond.services.I18n;
-import org.apache.logging.log4j.Level;
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.InputMismatchException;
@@ -22,10 +24,12 @@ public class PeopleCLI {
         try {
             readConfigs();
 
+            initLogger();
+
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             stmt = conn.createStatement();
 
-            useLogger("Program started");
+            logger.info("Program started");
 
             if (databaseExists(DB_NAME)) {
                 stmt.executeUpdate("DROP DATABASE " + DB_NAME);
@@ -36,20 +40,20 @@ public class PeopleCLI {
 
             while(true) {
                 try {
-                    useLogger("Reading command");
+                    logger.info("Reading command");
                     readNextCommand();
                 } catch (PeopleCLIException | RuntimeException e) {
                     System.out.println(I18n.getMessage("error_sql_query"));
-                    useLogger(e.getMessage());
+                    logger.error(e.getMessage());
                 }
 
             }
         } catch (SQLException e) {
             System.out.println(I18n.getMessage("error_creating_db"));
-            useLogger(e.getMessage());
+            logger.error(e.getMessage());
         } catch (PeopleCLIException e) {
             System.out.println(I18n.getMessage("error_sql_query"));
-            useLogger(e.getMessage());
+            logger.error(e.getMessage());
         } finally {
             closeScanner();
         }
@@ -131,13 +135,17 @@ public class PeopleCLI {
         }
     }
 
-    private static void useLogger(String message) {
+    private static void initLogger() {
+        BasicConfigurator.configure();
+        Level logLevel = null;
         switch (LOG_LEVEL) {
-            case "trace" -> logger.trace(message);
-            case "info" -> logger.info(message);
-            case "debug" -> logger.debug(message);
-            case "error" -> logger.error(message);
-            case "warn" -> logger.warn(message);
+            case "trace" -> logLevel = Level.TRACE;
+            case "debug" -> logLevel = Level.DEBUG;
+            case "info" -> logLevel = Level.INFO;
+            case "warn" -> logLevel = Level.WARN;
+            case "error" -> logLevel = Level.ERROR;
+            case "fatal" -> logLevel = Level.FATAL;
         }
+        logger.setLevel(logLevel);
     }
 }
