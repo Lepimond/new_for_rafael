@@ -21,11 +21,17 @@ public class PeopleCLI {
     public PeopleCLI() {
         try {
             readConfigs();
+        } catch (PeopleCLIException e) {
+            System.out.println(I18n.getMessage("error_reading_config"));
+            logger.error(e.getMessage());
+        }
+
+        try (Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+        Statement statement = connection.createStatement()) {
+            conn = connection;
+            stmt = statement;
 
             initLogger();
-
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            stmt = conn.createStatement();
 
             logger.info("Program started");
 
