@@ -16,6 +16,8 @@ public class DBUtil {
     public static String PASS;
     public static String LOGS;
     public static String LOG_LEVEL;
+    public static String CONSOLE_LOG;
+    public static String FILE_LOG;
     public static final Scanner scan = new Scanner(System.in);
 
     public static final PersonDAO dao = new PersonDAO();

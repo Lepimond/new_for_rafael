@@ -327,3 +327,31 @@
 2024-02-06 12:07:37,644 [INFO|PeopleCLI] Reading command
 2024-02-06 12:07:42,285 [INFO|PeopleCLI] Reading command
 2024-02-06 12:07:44,459 [INFO|PeopleCLI] Reading command
+2024-02-06 12:12:51,670 [INFO|PeopleCLI] Program started
+2024-02-06 12:12:51,699 [INFO|PeopleCLI] Reading command
+2024-02-06 12:17:04,864 [INFO|PeopleCLI] Reading command
+2024-02-06 12:17:04,875 [INFO|PeopleCLI] Reading command
+2024-02-06 12:17:09,042 [INFO|PeopleCLI] Reading command
+2024-02-06 12:17:11,449 [ERROR|PeopleCLI] java.sql.SQLException: Illegal operation on empty result set.
+2024-02-06 12:17:11,450 [INFO|PeopleCLI] Reading command
+2024-02-06 12:17:14,382 [INFO|PeopleCLI] Reading command
+2024-02-06 12:17:24,514 [INFO|PeopleCLI] Reading command
+2024-02-06 12:17:28,338 [INFO|PeopleCLI] Reading command
+2024-02-06 12:17:38,711 [ERROR|PeopleCLI] 
+2024-02-06 12:17:38,712 [INFO|PeopleCLI] Reading command
+2024-02-06 12:17:38,720 [INFO|PeopleCLI] Reading command
+2024-02-06 12:23:42,885 [INFO|PeopleCLI] Program started
+2024-02-06 12:23:42,914 [INFO|PeopleCLI] Reading command
+2024-02-06 12:23:54,557 [INFO|PeopleCLI] Reading command
+2024-02-06 12:24:03,022 [INFO|PeopleCLI] Reading command
+2024-02-06 12:24:12,206 [ERROR|PeopleCLI] java.sql.SQLException: Illegal operation on empty result set.
+2024-02-06 12:24:12,207 [INFO|PeopleCLI] Reading command
+2024-02-06 12:24:25,585 [INFO|PeopleCLI] Program started
+2024-02-06 12:24:25,613 [INFO|PeopleCLI] Reading command
+2024-02-06 12:24:46,283 [INFO|PeopleCLI] Program started
+2024-02-06 12:24:46,310 [INFO|PeopleCLI] Reading command
+2024-02-06 12:24:52,207 [INFO|PeopleCLI] Reading command
+2024-02-06 12:24:59,047 [INFO|PeopleCLI] Program started
+2024-02-06 12:24:59,075 [INFO|PeopleCLI] Reading command
+2024-02-06 12:25:13,324 [INFO|PeopleCLI] Program started
+2024-02-06 12:25:13,345 [INFO|PeopleCLI] Reading command

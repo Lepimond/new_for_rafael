@@ -149,8 +149,13 @@ public class PeopleCLI {
         fileAppender.setAppend(true);
         fileAppender.activateOptions();
 
-        BasicConfigurator.configure(consoleAppender);
-        BasicConfigurator.configure(fileAppender);
+        if (CONSOLE_LOG.equals("yes")) {
+            BasicConfigurator.configure(consoleAppender);
+        }
+
+        if (FILE_LOG.equals("yes")) {
+            BasicConfigurator.configure(fileAppender);
+        }
 
         Level logLevel = null;
         switch (LOG_LEVEL) {
