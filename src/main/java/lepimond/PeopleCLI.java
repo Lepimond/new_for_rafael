@@ -149,7 +149,7 @@ public class PeopleCLI {
 
         FileAppender fileAppender = new FileAppender();
         fileAppender.setName("FileLogger");
-        fileAppender.setFile("logs/program_result.log");
+        fileAppender.setFile("logs/" + LOG_FILE_NAME);
         fileAppender.setLayout(new PatternLayout(PATTERN));
         fileAppender.setThreshold(Level.ALL);
         fileAppender.setAppend(true);

@@ -34,5 +34,7 @@ public class PeopleCLIConfiguration {
 
         CONSOLE_LOG = props.getProperty("console_log");
         FILE_LOG = props.getProperty("file_log");
+
+        LOG_FILE_NAME = props.getProperty("log_file_name");
     }
 }
