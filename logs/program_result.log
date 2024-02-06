@@ -264,3 +264,66 @@
 2024-02-06 11:28:52.454 [main] WARN  lepimond.DBUtil - test
 2024-02-06 11:28:52.724 [main] WARN  lepimond.DBUtil - Program started
 2024-02-06 11:28:52.749 [main] WARN  lepimond.DBUtil - Reading command
+2024-02-06 11:51:21,735 INFO  [DBUtil] Program started
+2024-02-06 11:51:21,735 INFO  [DBUtil] Program started
+2024-02-06 11:51:21,759 INFO  [DBUtil] Reading command
+2024-02-06 11:51:21,759 INFO  [DBUtil] Reading command
+2024-02-06 11:51:24,272 INFO  [DBUtil] Reading command
+2024-02-06 11:51:24,272 INFO  [DBUtil] Reading command
+2024-02-06 11:51:26,138 INFO  [DBUtil] Reading command
+2024-02-06 11:51:26,138 INFO  [DBUtil] Reading command
+2024-02-06 11:59:09,122 INFO  [DBUtil] Program started
+2024-02-06 11:59:09,122 INFO  [DBUtil] Program started
+2024-02-06 11:59:09,145 INFO  [DBUtil] Reading command
+2024-02-06 11:59:09,145 INFO  [DBUtil] Reading command
+2024-02-06 11:59:45,902 INFO  [DBUtil] Program started
+2024-02-06 11:59:45,902 INFO  [DBUtil] Program started
+2024-02-06 11:59:45,922 INFO  [DBUtil] Reading command
+2024-02-06 11:59:45,922 INFO  [DBUtil] Reading command
+2024-02-06 11:59:55,477 INFO  [DBUtil] Program started
+2024-02-06 11:59:55,499 INFO  [DBUtil] Reading command
+2024-02-06 12:00:15,739 INFO  [DBUtil] Program started
+2024-02-06 12:00:15,739 INFO  [DBUtil] Program started
+2024-02-06 12:00:15,763 INFO  [DBUtil] Reading command
+2024-02-06 12:00:15,763 INFO  [DBUtil] Reading command
+2024-02-06 12:00:26,581 INFO  [DBUtil] Program started
+2024-02-06 12:00:26,602 INFO  [DBUtil] Reading command
+2024-02-06 12:00:42,793 INFO  [DBUtil] Program started
+2024-02-06 12:00:42,793 INFO  [DBUtil] Program started
+2024-02-06 12:00:42,813 INFO  [DBUtil] Reading command
+2024-02-06 12:00:42,813 INFO  [DBUtil] Reading command
+2024-02-06 12:00:45,238 INFO  [DBUtil] Reading command
+2024-02-06 12:00:45,238 INFO  [DBUtil] Reading command
+2024-02-06 12:00:48,375 INFO  [DBUtil] Reading command
+2024-02-06 12:00:48,375 INFO  [DBUtil] Reading command
+2024-02-06 12:01:22,543 INFO  [DBUtil] Program started
+2024-02-06 12:01:22,574 INFO  [DBUtil] Reading command
+2024-02-06 12:01:46,101 INFO  [DBUtil] Program started
+2024-02-06 12:01:46,122 INFO  [DBUtil] Reading command
+2024-02-06 12:02:19,067 INFO  [DBUtil] Program started
+2024-02-06 12:02:19,093 INFO  [DBUtil] Reading command
+2024-02-06 12:02:21,672 INFO  [DBUtil] Reading command
+2024-02-06 12:02:21,675 INFO  [DBUtil] Reading command
+2024-02-06 12:02:23,311 INFO  [DBUtil] Reading command
+2024-02-06 12:02:27,218 ERROR [DBUtil] java.sql.SQLException: Illegal operation on empty result set.
+2024-02-06 12:02:27,218 INFO  [DBUtil] Reading command
+2024-02-06 12:02:30,119 ERROR [DBUtil] java.sql.SQLException: Illegal operation on empty result set.
+2024-02-06 12:02:30,119 INFO  [DBUtil] Reading command
+2024-02-06 12:03:10,177 INFO  [DBUtil] Program started
+2024-02-06 12:03:10,204 INFO  [DBUtil] Reading command
+2024-02-06 12:03:12,388 INFO  [DBUtil] Reading command
+2024-02-06 12:03:15,014 INFO  [DBUtil] Reading command
+2024-02-06 12:03:54,854 [INFO|PeopleCLI] Program started
+2024-02-06 12:03:54,877 [INFO|PeopleCLI] Reading command
+2024-02-06 12:04:06,887 [INFO|PeopleCLI] Program started
+2024-02-06 12:04:06,912 [INFO|PeopleCLI] Reading command
+2024-02-06 12:04:09,748 [INFO|PeopleCLI] Reading command
+2024-02-06 12:04:11,785 [INFO|PeopleCLI] Reading command
+2024-02-06 12:04:13,967 [ERROR|PeopleCLI] java.sql.SQLException: Illegal operation on empty result set.
+2024-02-06 12:04:13,968 [INFO|PeopleCLI] Reading command
+2024-02-06 12:06:26,284 [INFO|PeopleCLI] Program started
+2024-02-06 12:06:26,312 [INFO|PeopleCLI] Reading command
+2024-02-06 12:07:18,641 [INFO|PeopleCLI]2024-02-06 12:07:18,662 [INFO|PeopleCLI]2024-02-06 12:07:37,624 [INFO|PeopleCLI] Program started
+2024-02-06 12:07:37,644 [INFO|PeopleCLI] Reading command
+2024-02-06 12:07:42,285 [INFO|PeopleCLI] Reading command
+2024-02-06 12:07:44,459 [INFO|PeopleCLI] Reading command

@@ -3,9 +3,7 @@ package lepimond;
 import lepimond.commands.*;
 import lepimond.exceptions.PeopleCLIException;
 import lepimond.services.I18n;
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.apache.log4j.*;
 
 import java.sql.*;
 import java.util.InputMismatchException;
@@ -136,7 +134,24 @@ public class PeopleCLI {
     }
 
     private static void initLogger() {
-        BasicConfigurator.configure();
+        String PATTERN = "%d [%p|%C{1}] %m%n";
+
+        ConsoleAppender consoleAppender = new ConsoleAppender();
+        consoleAppender.setLayout(new PatternLayout(PATTERN));
+        consoleAppender.setThreshold(Level.ALL);
+        consoleAppender.activateOptions();
+
+        FileAppender fileAppender = new FileAppender();
+        fileAppender.setName("FileLogger");
+        fileAppender.setFile("logs/program_result.log");
+        fileAppender.setLayout(new PatternLayout(PATTERN));
+        fileAppender.setThreshold(Level.ALL);
+        fileAppender.setAppend(true);
+        fileAppender.activateOptions();
+
+        BasicConfigurator.configure(consoleAppender);
+        BasicConfigurator.configure(fileAppender);
+
         Level logLevel = null;
         switch (LOG_LEVEL) {
             case "trace" -> logLevel = Level.TRACE;
@@ -145,6 +160,8 @@ public class PeopleCLI {
             case "warn" -> logLevel = Level.WARN;
             case "error" -> logLevel = Level.ERROR;
             case "fatal" -> logLevel = Level.FATAL;
+            case "all" -> logLevel = Level.ALL;
+            case "off" -> logLevel = Level.OFF;
         }
         logger.setLevel(logLevel);
     }
